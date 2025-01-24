@@ -1,0 +1,27 @@
+{
+  "name": "open_source_group6",
+  "version": "1.0.0",
+  "description": "Open Source Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dilvirp/Open_Source_Group_6.git"
+  },
+  "author": "Group 6 Open Source",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dilvirp/Open_Source_Group_6/issues"
+  },
+  "homepage": "https://github.com/dilvirp/Open_Source_Group_6#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
