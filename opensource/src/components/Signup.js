@@ -1,4 +1,4 @@
-import "./"
+import "../components/Signup.css"
 
 function Signup() {
     return (
