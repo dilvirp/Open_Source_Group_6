@@ -1,0 +1,26 @@
+.container{
+    width: 397px;
+    text-align: center;
+    margin:  auto auto;
+}
+
+
+.container h1{
+    text-align: center;
+}
+
+.main-content{
+    background-color: azure
+}
+
+
+.main-content footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
