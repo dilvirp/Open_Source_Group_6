@@ -11,32 +11,26 @@ const Home = () => {
       .catch((error) => console.error("Error fetching the books data:", error));
   }, []);
 
-  if (books.length === 0) {
-    return <p>Loading...</p>;
-  }
-
-  const bookClick = (book) => {
-    console.log("Book clicked:", book);
-  }
-
   return (
-    <div>
-      <h1 style={{ textAlign: "center", margin: "20px 0" }}>Book List</h1>
+    <div className="wrapper">
+      <h1 style={{ textAlign: "center", margin: "20px 0" }}>Book Locker</h1>
       <div className="book-list">
         {books.map((book) => (
-          <div key={book.id || book.booktitle} className="book-card" onClick={() => bookClick(book)}> 
-            <h2 className="book-title">{book.bookTitle}</h2>
+          <div key={book.id} className="book-card">
+            <h2 className="book-title">{book.booktitle}</h2>
             <p className="book-author"><strong>Author:</strong> {book.author}</p>
-            <img src={book.imageURL} alt={book.bookTitle} className="book-image" />
+            <img src={book.imageURL} alt={book.booktitle} className="book-image" />
+            <div className="book-description">
+              <p>{book.description}</p>
+            </div>
           </div>
         ))}
       </div>
-
+      
       <div className="footer">
-        <footer>&copy; Book Locker Dilvir Noah Kushi </footer>
-        </div>
+        <footer>&copy; Book Locker Dilvir Noah Kushi</footer>
+      </div>
     </div>
-
   );
 };
 
