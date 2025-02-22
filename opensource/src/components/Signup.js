@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 
 
 import "../components/Signup.css"
@@ -15,7 +17,6 @@ function Signup() {
   }
 
   // Handle form submissions
-
   const submitForm = async (e) => {
     e.preventDefault();
 

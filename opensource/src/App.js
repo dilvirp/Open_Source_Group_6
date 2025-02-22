@@ -1,20 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import Home from './components/Home';
-import NavBar from './components/Navbar';
-
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import NavBar from "./components/Navbar";
+import Home from "./components/Home";
+import Login from "./components/Login"
+import Signup from "./components/Signup"
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
+
   return (
     <Router>
-      <NavBar />
+      {token && <NavBar />} 
       <Routes>
-        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="/home" element={token ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/" element={token ? <Navigate to="/home" /> : <Navigate to="/login" />} /> 
       </Routes>
     </Router>
   );

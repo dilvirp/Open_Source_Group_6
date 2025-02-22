@@ -1,15 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css"; // Import the CSS file
 
 function NavBar() {
-    return (
-        <div className="nav_bar">
-            <nav>
-                <Link to="/home">Home</Link>
-            </nav>
-        </div>
-    );
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <center><h1 className="logo">Book Locker</h1></center>
+        {token && (
+          <div className="nav-links">
+            <Link to="/home" className="nav-link">Home</Link>
+            <Link to="/login" className="nav-link" onClick={handleLogout}>Logout</Link>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
 }
 
 export default NavBar;
