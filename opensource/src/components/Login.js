@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../components/Login.css";
 
 function Login() {
@@ -9,13 +9,11 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
- 
     if (localStorage.getItem("token")) {
       navigate("/home");
     }
-  }, [token, navigate]); 
+  }, [token, navigate]);
 
-  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -36,7 +34,7 @@ function Login() {
 
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        setToken(data.token); 
+        setToken(data.token);
       } else {
         setError(data.message || "Invalid Email or password");
       }
@@ -52,30 +50,32 @@ function Login() {
       <form onSubmit={submitForm}>
         <div>
           <label>Email Address</label>
-          <input 
-            type="text" 
-            name="emailAddress" 
+          <input
+            type="text"
+            name="emailAddress"
             placeholder="Enter in your email address"
-            value={formData.emailAddress} 
-            onChange={handleChange} 
+            value={formData.emailAddress}
+            onChange={handleChange}
             required
           />
         </div>
 
         <div>
           <label>Password</label>
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Enter in your password" 
-            value={formData.password} 
-            onChange={handleChange} 
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter in your password"
+            value={formData.password}
+            onChange={handleChange}
             required
           />
         </div>
         <button type="submit">Login</button>
       </form>
-      <center><Link to="/signup">Don't have an account? Sign up</Link></center>
+      <center>
+        <Link to="/signup">Don't have an account? Sign up</Link>
+      </center>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css"; // Import the CSS file
+import "./Navbar.css";
 
 function NavBar() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
@@ -14,11 +14,17 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <center><h1 className="logo">Book Locker</h1></center>
+        <center>
+          <h1 className="logo">Book Locker</h1>
+        </center>
         {token && (
           <div className="nav-links">
-            <Link to="/home" className="nav-link">Home</Link>
-            <Link to="/login" className="nav-link" onClick={handleLogout}>Logout</Link>
+            <Link to="/home" className="nav-link">
+              Home
+            </Link>
+            <Link to="/login" className="nav-link" onClick={handleLogout}>
+              Logout
+            </Link>
           </div>
         )}
       </div>
