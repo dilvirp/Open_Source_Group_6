@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "../components/Signup.css";
 
 function Signup() {
   const [formData, setFormData] = useState({ emailAddress: "", password: "" });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({
+    emailAddress: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
   // Handle input changes
@@ -13,7 +15,7 @@ function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submissions
+  // Handle form submission
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -32,20 +34,29 @@ function Signup() {
         console.log("Signup successful!");
         navigate("/login");
       } else {
-        if (data.errors && data.errors.Password) {
-          setError(data.errors.Password[0]);
-        } else {
-          setError(data.title || "Signup failed. Please try again.");
-        }
+        setErrors({
+          emailAddress: data.errors?.EmailAddress
+            ? data.errors.EmailAddress[0]
+            : "",
+          password: data.errors?.Password ? data.errors.Password[0] : "",
+        });
       }
     } catch (error) {
-      setError("Something went wrong. Please try again.");
+      console.error("Signup error:", error);
+      setErrors({
+        emailAddress: "",
+        password: "",
+      });
     }
   };
+
   return (
     <div className="signup-container">
       <h2>Sign Up</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {errors.emailAddress && (
+        <p style={{ color: "red" }}>{errors.emailAddress}</p>
+      )}
+      {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
       <form onSubmit={submitForm}>
         <div>
           <label>Email</label>
@@ -53,6 +64,7 @@ function Signup() {
             type="text"
             name="emailAddress"
             placeholder="Enter your email"
+            value={formData.emailAddress}
             onChange={handleChange}
           />
         </div>
@@ -62,6 +74,7 @@ function Signup() {
             type="password"
             name="password"
             placeholder="Enter your password"
+            value={formData.password}
             onChange={handleChange}
           />
         </div>

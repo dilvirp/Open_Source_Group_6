@@ -10,6 +10,7 @@ import NavBar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import BookDetails from "./components/BookDetails";
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function AppContent() {
         <Route
           path="/"
           element={token ? <Navigate to="/home" /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/book/:id"
+          element={token ? <BookDetails /> : <Navigate to="/login" />}
         />
       </Routes>
     </>
