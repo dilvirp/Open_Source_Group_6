@@ -14,9 +14,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <center>
-          <h1 className="logo">Book Locker</h1>
-        </center>
+        <h1 className="logo">Book Locker</h1>
         {token && (
           <div className="nav-links">
             <Link to="/home" className="nav-link">
