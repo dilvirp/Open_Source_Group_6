@@ -45,7 +45,7 @@ const AddBook = () => {
       return;
     }
 
-    // Validate ISBN length (13 digits)
+    // Validate and ISBN length (13 digits)
     if (!/^\d{13}$/.test(bookDetails.ISBN)) {
       alert("ISBN must be exactly 13 digits.");
       return;
@@ -73,6 +73,7 @@ const AddBook = () => {
       }
 
       const data = await response.json();
+      console.log(data);
       alert("Book added successfully!");
       // Reset form after successful submission
       setBookDetails({
