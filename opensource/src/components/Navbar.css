@@ -11,7 +11,7 @@
 }
 
 .logo {
-  color: #ecf0f1;
+  color:darkorange;
   font-size: 24px;
   text-decoration: none;
 }
@@ -22,14 +22,14 @@
 }
 
 .nav-link {
-  color: #ecf0f1;
+  color:darkorange;
   text-decoration: none;
   font-size: 18px;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #3498db;
+  color: gold;
 }
 
 @media (max-width: 768px) {

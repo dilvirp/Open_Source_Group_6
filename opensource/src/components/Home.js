@@ -40,7 +40,7 @@ const Home = () => {
         ))}
       </div>
       <div className="footer">
-        <footer>&copy; Book Locker Dilvir Noah Kushi</footer>
+        <footer>Conestoga College &copy; <b>Book Locker</b> Dilvir, Noah, Kushi</footer>
       </div>
     </div>
   );

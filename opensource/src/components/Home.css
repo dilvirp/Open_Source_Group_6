@@ -5,6 +5,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  background-color: aliceblue;
 }
 
 .wrapper {
@@ -74,10 +75,10 @@ body {
 }
 
 .footer {
-  background: #f8f9fa;
+  background-color: #537699;
   padding: 20px;
   text-align: center;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid #a0a3a7;
   flex-shrink: 0;
   position: relative;
   width: 100%;
