@@ -11,6 +11,8 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import BookDetails from "./components/BookDetails";
+import Settings from "./components/Settings";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -22,7 +24,6 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
@@ -38,6 +39,7 @@ function AppContent() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/settings" element={<Settings />} />
         <Route
           path="/home"
           element={token ? <Home /> : <Navigate to="/login" />}
@@ -50,6 +52,12 @@ function AppContent() {
           path="/book/:id"
           element={token ? <BookDetails /> : <Navigate to="/login" />}
         />
+
+         <Route
+          path="/profile"
+          element={token ? <Profile /> : <Navigate to="/login" />}
+        />
+      
       </Routes>
     </>
   );
