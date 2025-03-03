@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";  // Import useNavigate from react-router-dom
-import "./Profile.css"; // Import the CSS file
+import { useNavigate } from "react-router-dom";
+import "./Profile.css";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Use useNavigate hook for navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
-
+      
       if (!token) {
-        console.error("No token found in localStorage");
+        console.warn("No token found. Redirecting to login...");
         setError("User is not authenticated. Please log in.");
         setLoading(false);
+        navigate("/login");
         return;
       }
 
@@ -23,24 +24,33 @@ const Profile = () => {
         const response = await fetch("http://localhost:5189/api/auth/profile", {
           method: "GET",
           headers: {
-            "Authorization": `Bearer ${token}`, // Ensure correct format
+            "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
 
         if (!response.ok) {
-          const errorData = await response.json();
           if (response.status === 401) {
-            // Handle token expiration or invalid token
+            console.warn("Token expired or invalid. Redirecting to login...");
             localStorage.removeItem("token");
-            navigate("/login"); // Use navigate instead of history.push
-            setError("Session expired. Please log in again.");
+            navigate("/login");
             return;
           }
-          throw new Error(`Failed to load profile: ${errorData.message}`);
+
+          const contentType = response.headers.get("content-type");
+          let errorMessage = `Error ${response.status}: ${response.statusText}`;
+
+          if (contentType && contentType.includes("application/json")) {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorMessage;
+          }
+
+          throw new Error(errorMessage);
         }
 
         const data = await response.json();
+        if (!data) throw new Error("Profile data is empty");
+
         setProfile(data);
       } catch (err) {
         console.error("Fetch profile error:", err);
@@ -51,7 +61,7 @@ const Profile = () => {
     };
 
     fetchProfile();
-  }, [navigate]); // `navigate` is added to the dependency array
+  }, [navigate]);
 
   if (loading) return <p className="loading">Loading...</p>;
   if (error) return <p className="error">{error}</p>;
