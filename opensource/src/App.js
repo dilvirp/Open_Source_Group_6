@@ -13,6 +13,7 @@ import Signup from "./components/Signup";
 import BookDetails from "./components/BookDetails";
 import Settings from "./components/Settings";
 import Profile from "./components/Profile";
+import AddBook from "./components/AddBook";
 
 function App() {
   return (
@@ -57,7 +58,10 @@ function AppContent() {
           path="/profile"
           element={token ? <Profile /> : <Navigate to="/login" />}
         />
-      
+         <Route
+          path="/add-book"
+          element={token ? <AddBook /> : <Navigate to="/login" />}
+        />
       </Routes>
     </>
   );

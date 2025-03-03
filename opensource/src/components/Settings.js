@@ -23,6 +23,17 @@ function Settings() {
             View and update your profile information.
           </div>
         </div>
+        <div
+          className="settings-option"
+          onClick={() => handleNavigation("/add-book")} // Navigate to Add New Book page
+          role="button"
+          tabIndex="0"
+        >
+          <p>Add New Book</p>
+          <div className="settings-description">
+            Add a new book to your collection.
+          </div>
+        </div>
       </div>
     </div>
   );
