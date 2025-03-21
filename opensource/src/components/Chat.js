@@ -1,4 +1,5 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
+import "./Chat.css"; 
 
 const Chat = () => {
     const [message, setMessage] = useState("");
@@ -33,23 +34,25 @@ const Chat = () => {
 
     return (
         <div className="chat-container">
-            <div className="chat-history">
-                {chatHistory.map((msg, index) => (
-                    <div key={index} className={`chat-message ${msg.role}`}>
-                        <strong>{msg.role === "user" ? "You" : "Bot"}:</strong> {msg.content}
-                    </div>
-                ))}
-            </div>
-            <div className="chat-input">
-                <input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Type your message..."
-                />
-                <button onClick={sendMessage} disabled={loading}>
-                    {loading ? "Sending..." : "Send"}
-                </button>
+            <div className="chat-box">
+                <div className="chat-history">
+                    {chatHistory.map((msg, index) => (
+                        <div key={index} className={`chat-message ${msg.role}`}>
+                            <strong>{msg.role === "user" ? "You" : "Librarian"}:</strong> {msg.content}
+                        </div>
+                    ))}
+                </div>
+                <div className="chat-input">
+                    <input
+                        type="text"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Type your message..."
+                    />
+                    <button onClick={sendMessage} disabled={loading}>
+                        {loading ? "Sending..." : "Send"}
+                    </button>
+                </div>
             </div>
         </div>
     );
