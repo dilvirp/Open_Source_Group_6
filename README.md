@@ -6,6 +6,11 @@
 - Dilvir Parmar
 - Khushi Patel
 
-To run this application open the console and type:
+To run this application first make sure you are in the corret directory
+otherwise open the console and type:
+
+`cd .\opensource\`
+
+After you are in the correct directory open the console and type:
 
 `npm start`

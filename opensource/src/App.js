@@ -43,7 +43,10 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/location" element={<Location />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route 
+          path="/settings" 
+          element={token ? <Settings /> : <Navigate to="/login" />} 
+        />
         <Route
           path="/home"
           element={token ? <Home /> : <Navigate to="/login" />}
