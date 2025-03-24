@@ -15,6 +15,7 @@ import Settings from "./components/Settings";
 import Profile from "./components/Profile";
 import AddBook from "./components/AddBook";
 import Chat from "./components/Chat";
+import Location from "./components/Location";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function AppContent() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/location" element={<Location />} />
         <Route path="/settings" element={<Settings />} />
         <Route
           path="/home"
