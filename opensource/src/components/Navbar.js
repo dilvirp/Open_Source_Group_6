@@ -23,6 +23,9 @@ function NavBar() {
             <Link to="/chat" className="nav-link">
               Chat
             </Link>
+            <Link to="/location" className="nav-link">
+              Locations
+            </Link>
             <Link to="/settings" className="nav-link">
               Settings
             </Link>
