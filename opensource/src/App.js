@@ -14,6 +14,8 @@ import BookDetails from "./components/BookDetails";
 import Settings from "./components/Settings";
 import Profile from "./components/Profile";
 import AddBook from "./components/AddBook";
+import Chat from "./components/Chat";
+import Location from "./components/Location";
 
 function App() {
   return (
@@ -40,7 +42,11 @@ function AppContent() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/location" element={<Location />} />
+        <Route 
+          path="/settings" 
+          element={token ? <Settings /> : <Navigate to="/login" />} 
+        />
         <Route
           path="/home"
           element={token ? <Home /> : <Navigate to="/login" />}
@@ -61,6 +67,10 @@ function AppContent() {
          <Route
           path="/add-book"
           element={token ? <AddBook /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/chat" 
+          element={token ? <Chat /> : <Navigate to="/login" />}
         />
       </Routes>
     </>

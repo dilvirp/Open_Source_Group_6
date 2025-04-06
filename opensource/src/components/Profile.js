@@ -69,10 +69,47 @@ const Profile = () => {
   return (
     <div className="container">
       <h2 className="heading">User Profile</h2>
-      <div className="card">
-        <p>
-          <strong>Email:</strong> {profile.emailAddress}
-        </p>
+
+      <div className="profile-card">
+        {/* Profile Picture */}
+        <div className="profile-image">
+          <img
+            src={profile.profilePicture || "https://via.placeholder.com/150"}
+            alt="Profile"
+          />
+        </div>
+
+        <div className="profile-details">
+          <p>
+            <strong>Full Name:</strong> {profile.firstName} {profile.lastName}
+          </p>
+          <p>
+            <strong>Username:</strong> {profile.username}
+          </p>
+          <p>
+            <strong>Email:</strong> {profile.emailAddress}
+          </p>
+          <p>
+            <strong>Phone Number:</strong> {profile.phoneNumber || "N/A"}
+          </p>
+          <p>
+            <strong>Address:</strong> {profile.address || "N/A"}
+          </p>
+          <p>
+            <strong>Date of Birth:</strong> {profile.dateOfBirth || "N/A"}
+          </p>
+          <p>
+            <strong>Bio:</strong> {profile.bio || "No bio provided."}
+          </p>
+        </div>
+
+        {/* Edit Profile Button */}
+        <button
+          className="edit-profile-btn"
+          onClick={() => navigate("/update-profile")}
+        >
+          Edit Profile
+        </button>
       </div>
     </div>
   );
