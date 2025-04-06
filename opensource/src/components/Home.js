@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../components/Home.css";
-
+import "..//Styles/Home.css";
 const Home = () => {
   const [books, setBooks] = useState([]);
   const navigate = useNavigate();
@@ -24,8 +23,8 @@ const Home = () => {
             className="book-card"
             onClick={() => handleBookClick(book.id)}
           >
-            <h2 className="book-title">{book.bookTitle}</h2>
-            <p className="book-author">
+            <p className="book_title">{book.bookTitle}</p>
+            <p className="book_author">
               <strong>Author:</strong> {book.author}
             </p>
             <img
@@ -40,7 +39,9 @@ const Home = () => {
         ))}
       </div>
       <div className="footer">
-        <footer>Conestoga College &copy; <b>Book Locker</b> Dilvir, Noah, Kushi</footer>
+        <footer>
+          Conestoga College &copy; <b>Book Locker</b> Dilvir, Noah, Kushi
+        </footer>
       </div>
     </div>
   );

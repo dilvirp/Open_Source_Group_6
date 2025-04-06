@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./Settings.css";
+import { useNavigate } from "react-router-dom";
+import "../Styles/Settings.css";
 
 function Settings() {
   const navigate = useNavigate(); // Use useNavigate instead of useHistory

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Profile.css";
+import "..//Styles/Profile.css";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -11,7 +11,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
-      
+
       if (!token) {
         console.warn("No token found. Redirecting to login...");
         setError("User is not authenticated. Please log in.");
@@ -24,7 +24,7 @@ const Profile = () => {
         const response = await fetch("http://localhost:5189/api/auth/profile", {
           method: "GET",
           headers: {
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
@@ -70,7 +70,9 @@ const Profile = () => {
     <div className="container">
       <h2 className="heading">User Profile</h2>
       <div className="card">
-        <p><strong>Email:</strong> {profile.emailAddress}</p>
+        <p>
+          <strong>Email:</strong> {profile.emailAddress}
+        </p>
       </div>
     </div>
   );

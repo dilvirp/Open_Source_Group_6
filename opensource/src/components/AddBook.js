@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AddBook.css"; // Optional: Create a new CSS file for styling
+import "..//Styles/AddBook.css";
 
 const AddBook = () => {
   const [bookDetails, setBookDetails] = useState({

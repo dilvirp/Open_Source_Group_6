@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../components/BookDetails.css";
+import "..//Styles/BookDetails.css";
 
 const BookDetails = () => {
   const [book, setBook] = useState(null);
