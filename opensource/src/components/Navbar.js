@@ -20,6 +20,9 @@ function NavBar() {
             <Link to="/home" className="nav-link">
               Home
             </Link>
+            <Link to="/search" className="nav-link">
+              Search
+            </Link>
             <Link to="/chat" className="nav-link">
               Chat
             </Link>
