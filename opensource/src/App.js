@@ -16,6 +16,7 @@ import Profile from "./components/Profile";
 import AddBook from "./components/AddBook";
 import Chat from "./components/Chat";
 import Location from "./components/Location";
+import UpdateProfile from "./components/UpdateProfile";  
 
 function App() {
   return (
@@ -63,6 +64,10 @@ function AppContent() {
          <Route
           path="/profile"
           element={token ? <Profile /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/update-profile"
+          element={token ? <UpdateProfile /> : <Navigate to="/login" />}
         />
          <Route
           path="/add-book"
