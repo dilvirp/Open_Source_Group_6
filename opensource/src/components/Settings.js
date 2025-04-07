@@ -25,6 +25,17 @@ function Settings() {
         </div>
         <div
           className="settings-option"
+          onClick={() => handleNavigation("/display-settings")}
+          role="button"
+          tabIndex="0"
+        >
+          <p>Display Settings</p>
+          <div className="settings-description">
+            Customize your theme preferences.
+          </div>
+        </div>
+        <div
+          className="settings-option"
           onClick={() => handleNavigation("/add-book")} // Navigate to Add New Book page
           role="button"
           tabIndex="0"

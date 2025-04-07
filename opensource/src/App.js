@@ -5,7 +5,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react"; // Add createContext
 import NavBar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -16,17 +16,31 @@ import Profile from "./components/Profile";
 import AddBook from "./components/AddBook";
 import Chat from "./components/Chat";
 import Location from "./components/Location";
-<<<<<<< HEAD
 import UpdateProfile from "./components/UpdateProfile";  
-=======
 import Search from "./components/Search";
->>>>>>> d24ecc4eee198fe56527c190398c274b70930e0d
+import DisplaySettings from "./components/DisplaySettings";
+import "./App.css"; // Make sure this is imported
+
+// Create theme context
+export const ThemeContext = createContext();
 
 function App() {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    // Apply theme to document and body
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
+    // Store theme preference
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Router>
+        <AppContent />
+      </Router>
+    </ThemeContext.Provider>
   );
 }
 
@@ -42,7 +56,7 @@ function AppContent() {
   const showNavbar = !hideNavbarOnPages.includes(location.pathname);
 
   return (
-    <>
+    <div className="app-container">
       {showNavbar && <NavBar />}
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -51,6 +65,10 @@ function AppContent() {
         <Route
           path="/settings"
           element={token ? <Settings /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/display-settings"
+          element={token ? <DisplaySettings /> : <Navigate to="/login" />}
         />
         <Route
           path="/home"
@@ -64,19 +82,15 @@ function AppContent() {
           path="/book/:id"
           element={token ? <BookDetails /> : <Navigate to="/login" />}
         />
-
         <Route
           path="/profile"
           element={token ? <Profile /> : <Navigate to="/login" />}
         />
         <Route
-<<<<<<< HEAD
           path="/update-profile"
           element={token ? <UpdateProfile /> : <Navigate to="/login" />}
         />
-         <Route
-=======
->>>>>>> d24ecc4eee198fe56527c190398c274b70930e0d
+        <Route
           path="/add-book"
           element={token ? <AddBook /> : <Navigate to="/login" />}
         />
@@ -84,13 +98,12 @@ function AppContent() {
           path="/chat"
           element={token ? <Chat /> : <Navigate to="/login" />}
         />
-
         <Route
           path="/search"
           element={token ? <Search /> : <Navigate to="/login" />}
         />
       </Routes>
-    </>
+    </div>
   );
 }
 

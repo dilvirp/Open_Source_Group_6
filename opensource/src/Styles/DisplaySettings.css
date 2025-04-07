@@ -1,0 +1,52 @@
+.display-settings-wrapper {
+    min-height: calc(100vh - 60px);
+    padding: 20px;
+    background-color: var(--background-primary);
+  }
+  
+  .display-settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settings-section {
+    background-color: var(--background-secondary);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .theme-select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    border-radius: 4px;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+  
+  .settings-info {
+    background-color: var(--background-secondary);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: var(--text-secondary);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .display-settings-container {
+      padding: 15px;
+    }
+    
+    .theme-select {
+      max-width: 100%;
+    }
+  }
