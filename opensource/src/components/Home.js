@@ -23,7 +23,7 @@ const Home = () => {
             className="book-card"
             onClick={() => handleBookClick(book.id)}
           >
-            <p className="book_title">{book.bookTitle}</p>
+            <h2 className="book_title">{book.bookTitle}</h2>
             <p className="book_author">
               <strong>Author:</strong> {book.author}
             </p>
