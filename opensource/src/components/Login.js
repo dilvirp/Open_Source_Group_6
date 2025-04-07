@@ -6,6 +6,8 @@ function Login() {
   const [formData, setFormData] = useState({ emailAddress: "", password: "" });
   const [error, setError] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [success, setSuccess] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +37,7 @@ function Login() {
       if (response.ok) {
         localStorage.setItem("token", data.token);
         setToken(data.token);
+        setSuccess(true);
       } else {
         setError(data.message || "Invalid Email or password");
       }
@@ -47,6 +50,7 @@ function Login() {
     <div className="login-container">
       <h2>Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>Login successful</p>}
       <form onSubmit={submitForm}>
         <div>
           <label>Email Address</label>

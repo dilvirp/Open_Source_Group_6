@@ -43,7 +43,7 @@ function Signup() {
         console.log("Signup successful!");
         navigate("/login");
       } else {
-        setErrors(data.errors || {}); // Handle validation errors from backend
+        setErrors(data.errors || {});
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -54,9 +54,9 @@ function Signup() {
   return (
     <div className="signup-container">
       <h2>Sign Up</h2>
-      
+
       {errors.general && <p style={{ color: "red" }}>{errors.general}</p>}
-      
+
       <form onSubmit={submitForm}>
         <div>
           <label>Email</label>
@@ -67,7 +67,9 @@ function Signup() {
             value={formData.emailAddress}
             onChange={handleChange}
           />
-          {errors.emailAddress && <p style={{ color: "red" }}>{errors.emailAddress}</p>}
+          {errors.emailAddress && (
+            <p style={{ color: "red" }}>{errors.emailAddress}</p>
+          )}
         </div>
 
         <div>
