@@ -16,7 +16,11 @@ import Profile from "./components/Profile";
 import AddBook from "./components/AddBook";
 import Chat from "./components/Chat";
 import Location from "./components/Location";
+<<<<<<< HEAD
 import UpdateProfile from "./components/UpdateProfile";  
+=======
+import Search from "./components/Search";
+>>>>>>> d24ecc4eee198fe56527c190398c274b70930e0d
 
 function App() {
   return (
@@ -44,9 +48,9 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/location" element={<Location />} />
-        <Route 
-          path="/settings" 
-          element={token ? <Settings /> : <Navigate to="/login" />} 
+        <Route
+          path="/settings"
+          element={token ? <Settings /> : <Navigate to="/login" />}
         />
         <Route
           path="/home"
@@ -61,21 +65,29 @@ function AppContent() {
           element={token ? <BookDetails /> : <Navigate to="/login" />}
         />
 
-         <Route
+        <Route
           path="/profile"
           element={token ? <Profile /> : <Navigate to="/login" />}
         />
         <Route
+<<<<<<< HEAD
           path="/update-profile"
           element={token ? <UpdateProfile /> : <Navigate to="/login" />}
         />
          <Route
+=======
+>>>>>>> d24ecc4eee198fe56527c190398c274b70930e0d
           path="/add-book"
           element={token ? <AddBook /> : <Navigate to="/login" />}
         />
         <Route
-          path="/chat" 
+          path="/chat"
           element={token ? <Chat /> : <Navigate to="/login" />}
+        />
+
+        <Route
+          path="/search"
+          element={token ? <Search /> : <Navigate to="/login" />}
         />
       </Routes>
     </>
