@@ -35,4 +35,22 @@
     font-size: 16px;
     margin-top: 20px;
   }
+  .edit-profile-btn
+  {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+  }
+  .edit-profile-btn
+  {
+    background: #0056b3;
+  }
   

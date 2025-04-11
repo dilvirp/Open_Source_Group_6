@@ -1,0 +1,80 @@
+.book-details-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.edit-form {
+    background-color: var(--background-primary);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.edit-form h2 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: var(--font-decorative);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--focus-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-color);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+.loading {
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+}
+
+.error {
+    background-color: rgba(255, 68, 68, 0.1);
+    color: #ff4444;
+    border: 1px solid #ff4444;
+}
+
+/* Dark theme support */
+[data-theme='dark'] .form-control {
+    background-color: var(--background-secondary);
+}
+
+[data-theme='dark'] .form-control:focus {
+    border-color: var(--focus-color);
+    box-shadow: 0 0 0 2px var(--focus-color);
+}

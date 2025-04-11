@@ -14,10 +14,10 @@
 
 .settings-header {
   text-align: center;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333;
+  
 }
 
 .settings-options {
@@ -36,15 +36,15 @@
 
 .settings-option p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: bold;
   margin: 0;
-  color: #333;
+ 
 }
 
 .settings-description {
   font-size: 14px;
   margin-top: 5px;
-  color: #666;
+  
 }
 
 .settings-option:hover {

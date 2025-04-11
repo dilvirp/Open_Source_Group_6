@@ -79,7 +79,13 @@ const BookDetails = () => {
           </div>
           <div>
           <div className="book-actions">
-            <button onClick={handleDelete} className="delete-button">
+          <button 
+              onClick={() => navigate(`/edit-book/${id}`)} 
+              className="edit-button">
+                EditBook
+            </button>  
+            <button onClick={handleDelete} 
+            className="delete-button">
               Delete Book
             </button>
           </div>

@@ -19,6 +19,7 @@ import Location from "./components/Location";
 import UpdateProfile from "./components/UpdateProfile";  
 import Search from "./components/Search";
 import DisplaySettings from "./components/DisplaySettings";
+import EditBook from "./components/EditBook";
 import "./App.css"; // Make sure this is imported
 
 // Create theme context
@@ -94,6 +95,7 @@ function AppContent() {
           path="/add-book"
           element={token ? <AddBook /> : <Navigate to="/login" />}
         />
+        
         <Route
           path="/chat"
           element={token ? <Chat /> : <Navigate to="/login" />}
@@ -102,6 +104,10 @@ function AppContent() {
           path="/search"
           element={token ? <Search /> : <Navigate to="/login" />}
         />
+        <Route
+  path="/edit-book/:id"
+  element={token ? <EditBook /> : <Navigate to="/login" />}
+/>
       </Routes>
     </div>
   );

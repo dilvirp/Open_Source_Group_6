@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../Styles/BookDetails.css';
+import '../Styles/EditBook.css';
 
 const EditBook = () => {
   const { id } = useParams();
