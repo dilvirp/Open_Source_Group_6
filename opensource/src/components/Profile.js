@@ -10,7 +10,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         console.warn("No token found. Redirecting to login...");
@@ -32,7 +32,7 @@ const Profile = () => {
         if (!response.ok) {
           if (response.status === 401) {
             console.warn("Token expired or invalid. Redirecting to login...");
-            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             navigate("/login");
             return;
           }

@@ -16,7 +16,7 @@ import Profile from "./components/Profile";
 import AddBook from "./components/AddBook";
 import Chat from "./components/Chat";
 import Location from "./components/Location";
-import UpdateProfile from "./components/UpdateProfile";  
+import UpdateProfile from "./components/UpdateProfile";
 import Search from "./components/Search";
 import DisplaySettings from "./components/DisplaySettings";
 import "./App.css"; // Make sure this is imported
@@ -25,14 +25,16 @@ import "./App.css"; // Make sure this is imported
 export const ThemeContext = createContext();
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(
+    sessionStorage.getItem("theme") || "light"
+  );
 
   useEffect(() => {
     // Apply theme to document and body
     document.documentElement.setAttribute("data-theme", theme);
     document.body.setAttribute("data-theme", theme);
     // Store theme preference
-    localStorage.setItem("theme", theme);
+    sessionStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
@@ -46,10 +48,10 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
 
   useEffect(() => {
-    setToken(localStorage.getItem("token"));
+    setToken(sessionStorage.getItem("token"));
   }, [location.pathname]);
 
   const hideNavbarOnPages = ["/login", "/signup"];
