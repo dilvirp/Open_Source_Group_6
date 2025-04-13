@@ -1,0 +1,210 @@
+.container {
+    width: 100%;
+    max-width: 600px; /* Slightly wider for profile form */
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #28a745;
+    outline: none;
+  }
+  
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .helper-text {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+  }
+  
+  .error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submit-btn {
+    background: #28a745;
+    color: white;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    background: #218838;
+  }
+  
+  .cancel-btn {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .cancel-btn:hover:not(:disabled) {
+    background: #c82333;
+  }
+  
+  .submit-btn:disabled,
+  .cancel-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .loading {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    padding: 20px;
+  }
+  
+  .update-info {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  
+  .form-group input:disabled,
+  .form-group textarea:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+  }
+  
+  /* Required field indicator */
+  .form-group label::after {
+    content: "";
+  }
+  
+  .form-group label[for="firstName"]::after,
+  .form-group label[for="lastName"]::after,
+  .form-group label[for="username"]::after,
+  .form-group label[for="password"]::after {
+    content: " *";
+    color: #dc3545;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 480px) {
+    .container {
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+    }
+  
+    .heading {
+      font-size: 20px;
+    }
+  
+    .form-group input,
+    .form-group textarea,
+    .submit-btn,
+    .cancel-btn {
+      font-size: 14px;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    .submit-btn,
+    .cancel-btn {
+      width: 100%;
+    }
+  }
+  
+  /* Success message */
+  .success-message {
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Date input specific styling */
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 30px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%23666' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+  }
+  
+  /* Placeholder styling */
+  input::placeholder,
+  textarea::placeholder {
+    color: #999;
+  }
+  
+  /* Focus within form group */
+  .form-group:focus-within label {
+    color: #28a745;
+  }

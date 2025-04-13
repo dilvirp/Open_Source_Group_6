@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica:ital@0;1&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+
+.add-book-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .add-book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
+    padding: 8px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
