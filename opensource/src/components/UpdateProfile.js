@@ -15,7 +15,7 @@ const UpdateProfile = () => {
     bio: "",
     emailAddress: "",
     password: "",
-    updatedAt: new Date().toISOString()  // Added timestamp
+    updatedAt: new Date().toISOString(), // Added timestamp
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +24,7 @@ const UpdateProfile = () => {
   // Fetch current profile data
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       if (!token) {
         navigate("/login");
         return;
@@ -41,7 +41,7 @@ const UpdateProfile = () => {
 
         if (!response.ok) {
           if (response.status === 401) {
-            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             navigate("/login");
             return;
           }
@@ -49,7 +49,7 @@ const UpdateProfile = () => {
         }
 
         const data = await response.json();
-        setFormData(prevState => ({
+        setFormData((prevState) => ({
           ...prevState,
           firstName: data.firstName || "",
           lastName: data.lastName || "",
@@ -57,7 +57,9 @@ const UpdateProfile = () => {
           phoneNumber: data.phoneNumber || "",
           address: data.address || "",
           profilePicture: data.profilePicture || "",
-          dateOfBirth: data.dateOfBirth ? new Date(data.dateOfBirth).toISOString().split('T')[0] : "",
+          dateOfBirth: data.dateOfBirth
+            ? new Date(data.dateOfBirth).toISOString().split("T")[0]
+            : "",
           bio: data.bio || "",
           emailAddress: data.emailAddress || "",
         }));
@@ -74,10 +76,10 @@ const UpdateProfile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
       [name]: value,
-      updatedAt: new Date().toISOString() // Update timestamp on each change
+      updatedAt: new Date().toISOString(), // Update timestamp on each change
     }));
     setError(null);
   };
@@ -87,7 +89,12 @@ const UpdateProfile = () => {
     if (isSubmitting) return;
 
     // Validate required fields
-    if (!formData.firstName || !formData.lastName || !formData.username || !formData.password) {
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.username ||
+      !formData.password
+    ) {
       setError("Please fill in all required fields");
       return;
     }
@@ -95,7 +102,7 @@ const UpdateProfile = () => {
     setIsSubmitting(true);
     setError(null);
 
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if (!token) {
       navigate("/login");
       return;
@@ -105,40 +112,46 @@ const UpdateProfile = () => {
       // Format date fields for backend
       const formattedData = {
         ...formData,
-        dateOfBirth: formData.dateOfBirth ? new Date(formData.dateOfBirth).toISOString() : null,
+        dateOfBirth: formData.dateOfBirth
+          ? new Date(formData.dateOfBirth).toISOString()
+          : null,
         updatedAt: new Date().toISOString(),
-        updatedBy: "KPatel6272" // Current user's login
+        updatedBy: "KPatel6272", // Current user's login
       };
 
-      const response = await fetch("http://localhost:5189/api/auth/update-profile", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formattedData),
-      });
+      const response = await fetch(
+        "http://localhost:5189/api/auth/update-profile",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        }
+      );
 
       const responseData = await response.json();
 
       if (!response.ok) {
         if (response.status === 401) {
-          localStorage.removeItem("token");
+          sessionStorage.removeItem("token");
           navigate("/login");
           return;
         }
-        
+
         if (responseData.errors) {
-          const errorMessages = Object.values(responseData.errors).flat().join(", ");
+          const errorMessages = Object.values(responseData.errors)
+            .flat()
+            .join(", ");
           throw new Error(errorMessages);
         }
-        
+
         throw new Error(responseData.title || "Failed to update profile");
       }
 
       // Successfully updated, navigate to profile page
       navigate("/profile");
-      
     } catch (err) {
       console.error("Update profile error:", err);
       setError(err.message || "Failed to update profile");
@@ -148,14 +161,18 @@ const UpdateProfile = () => {
   };
 
   if (loading) {
-    return <div className="container"><p className="loading">Loading...</p></div>;
+    return (
+      <div className="container">
+        <p className="loading">Loading...</p>
+      </div>
+    );
   }
 
   return (
     <div className="container">
       <h2 className="heading">Update Profile</h2>
       {error && <div className="error-message">{error}</div>}
-      
+
       <form onSubmit={handleSubmit} className="profile-form">
         <div className="form-group">
           <label>First Name *</label>
@@ -239,7 +256,7 @@ const UpdateProfile = () => {
             name="dateOfBirth"
             value={formData.dateOfBirth}
             onChange={handleChange}
-            max={new Date().toISOString().split('T')[0]}
+            max={new Date().toISOString().split("T")[0]}
             disabled={isSubmitting}
           />
         </div>
@@ -267,7 +284,9 @@ const UpdateProfile = () => {
             required
             disabled={isSubmitting}
           />
-          <small className="helper-text">Required to confirm your changes</small>
+          <small className="helper-text">
+            Required to confirm your changes
+          </small>
         </div>
 
         <div className="form-group">
@@ -277,16 +296,12 @@ const UpdateProfile = () => {
         </div>
 
         <div className="button-group">
-          <button 
-            type="submit" 
-            className="submit-btn"
-            disabled={isSubmitting}
-          >
+          <button type="submit" className="submit-btn" disabled={isSubmitting}>
             {isSubmitting ? "Saving..." : "Save Changes"}
           </button>
-          <button 
-            type="button" 
-            className="cancel-btn" 
+          <button
+            type="button"
+            className="cancel-btn"
             onClick={() => navigate("/profile")}
             disabled={isSubmitting}
           >

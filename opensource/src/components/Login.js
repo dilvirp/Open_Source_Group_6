@@ -5,13 +5,13 @@ import "..//Styles/Login.css";
 function Login() {
   const [formData, setFormData] = useState({ emailAddress: "", password: "" });
   const [error, setError] = useState("");
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
   const [success, setSuccess] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       navigate("/home");
     }
   }, [token, navigate]);
@@ -35,7 +35,7 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        sessionStorage.setItem("token", data.token);
         setToken(data.token);
         setSuccess(true);
       } else {
