@@ -25,7 +25,7 @@ function DisplaySettings() {
 
   return (
     <div className="display-settings-wrapper">
-      <div className="display-settings-container">
+      <div className="container">
         <h2>Display Settings</h2>
         
         <div className="settings-section">

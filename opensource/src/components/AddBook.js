@@ -95,7 +95,7 @@ const AddBook = () => {
   };
 
   return (
-    <div className="add-book-container">
+    <div className="container">
       <h2>Add New Book</h2>
       {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit} className="add-book-form">
