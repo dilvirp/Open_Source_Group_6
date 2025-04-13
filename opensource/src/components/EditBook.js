@@ -77,7 +77,7 @@ const EditBook = () => {
 
   return (
     <div className="book-details-container">
-      <div className="book-details-content">
+     
         <form onSubmit={handleSubmit} className="edit-form">
           <h2>Edit Book</h2>
           
@@ -174,7 +174,7 @@ const EditBook = () => {
           </div>
         </form>
       </div>
-    </div>
+    
   );
 };
 
