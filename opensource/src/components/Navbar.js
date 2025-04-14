@@ -14,7 +14,14 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <h1 className="logo">Book Locker</h1>
+      <div className="logo-section">
+          <img
+            src="/AppLogo.jpg"
+            alt="Book Locker Logo"
+            className="navbar-logo"
+          />
+          <h1 className="logo-text">Book Locker</h1>
+        </div>
         {token && (
           <div className="nav-links">
             <Link to="/home" className="nav-link">
