@@ -91,21 +91,21 @@
   }
   
   .submit-btn {
-    background: #28a745;
+    background-color: #0066cc;
     color: white;
   }
   
   .submit-btn:hover:not(:disabled) {
-    background: #218838;
+    background-color: #0066cc;
   }
   
   .cancel-btn {
-    background: #dc3545;
+    background-color: #0066cc;
     color: white;
   }
   
   .cancel-btn:hover:not(:disabled) {
-    background: #c82333;
+    background-color: #0066cc;
   }
   
   .submit-btn:disabled,
@@ -204,7 +204,3 @@
     color: #999;
   }
   
-  /* Focus within form group */
-  .form-group:focus-within label {
-    color: #28a745;
-  }
