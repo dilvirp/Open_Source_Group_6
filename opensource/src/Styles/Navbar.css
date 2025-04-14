@@ -11,6 +11,7 @@
 }
 
 .logo {
+  color: darkorange;
   font-size: 24px;
   text-decoration: none;
 }
@@ -21,7 +22,7 @@
 }
 
 .nav-link {
-  color:darkorange;
+  color: darkorange;
   text-decoration: none;
   font-size: 18px;
   transition: color 0.3s;
