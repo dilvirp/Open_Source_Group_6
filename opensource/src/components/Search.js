@@ -12,10 +12,13 @@ const Search = () => {
   useEffect(() => {
     if (!searchInput.trim()) {
       setSearchResults([]);
+      setError(null);
       return;
     }
 
     const delaySearch = setTimeout(() => {
+      setError(null);
+      setLoading(true);
       fetch(
         `http://localhost:5189/api/Books/search?title=${encodeURIComponent(
           searchInput
@@ -23,7 +26,7 @@ const Search = () => {
       )
         .then((response) => {
           if (!response.ok) {
-            throw new Error("Network response was not ok");
+            throw new Error("Failed to fetch search results");
           }
           return response.json();
         })
