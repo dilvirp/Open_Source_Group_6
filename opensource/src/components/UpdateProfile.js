@@ -15,7 +15,7 @@ const UpdateProfile = () => {
     bio: "",
     emailAddress: "",
     password: "",
-    updatedAt: new Date().toISOString()  // Added timestamp
+    updatedAt: new Date().toISOString(),
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +24,7 @@ const UpdateProfile = () => {
   // Fetch current profile data
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token"); // switched from localStorage
       if (!token) {
         navigate("/login");
         return;
@@ -41,7 +41,7 @@ const UpdateProfile = () => {
 
         if (!response.ok) {
           if (response.status === 401) {
-            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             navigate("/login");
             return;
           }
@@ -77,7 +77,7 @@ const UpdateProfile = () => {
     setFormData(prevState => ({
       ...prevState,
       [name]: value,
-      updatedAt: new Date().toISOString() // Update timestamp on each change
+      updatedAt: new Date().toISOString()
     }));
     setError(null);
   };
@@ -86,7 +86,6 @@ const UpdateProfile = () => {
     e.preventDefault();
     if (isSubmitting) return;
 
-    // Validate required fields
     if (!formData.firstName || !formData.lastName || !formData.username || !formData.password) {
       setError("Please fill in all required fields");
       return;
@@ -95,19 +94,18 @@ const UpdateProfile = () => {
     setIsSubmitting(true);
     setError(null);
 
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token"); // switched from localStorage
     if (!token) {
       navigate("/login");
       return;
     }
 
     try {
-      // Format date fields for backend
       const formattedData = {
         ...formData,
         dateOfBirth: formData.dateOfBirth ? new Date(formData.dateOfBirth).toISOString() : null,
         updatedAt: new Date().toISOString(),
-        updatedBy: "KPatel6272" // Current user's login
+        updatedBy: "KPatel6272"
       };
 
       const response = await fetch("http://localhost:5189/api/auth/update-profile", {
@@ -123,22 +121,20 @@ const UpdateProfile = () => {
 
       if (!response.ok) {
         if (response.status === 401) {
-          localStorage.removeItem("token");
+          sessionStorage.removeItem("token");
           navigate("/login");
           return;
         }
-        
+
         if (responseData.errors) {
           const errorMessages = Object.values(responseData.errors).flat().join(", ");
           throw new Error(errorMessages);
         }
-        
+
         throw new Error(responseData.title || "Failed to update profile");
       }
 
-      // Successfully updated, navigate to profile page
       navigate("/profile");
-      
     } catch (err) {
       console.error("Update profile error:", err);
       setError(err.message || "Failed to update profile");
@@ -155,7 +151,7 @@ const UpdateProfile = () => {
     <div className="container">
       <h2 className="heading">Update Profile</h2>
       {error && <div className="error-message">{error}</div>}
-      
+
       <form onSubmit={handleSubmit} className="profile-form">
         <div className="form-group">
           <label>First Name *</label>
@@ -277,19 +273,10 @@ const UpdateProfile = () => {
         </div>
 
         <div className="button-group">
-          <button 
-            type="submit" 
-            className="submit-btn"
-            disabled={isSubmitting}
-          >
+          <button type="submit" className="submit-btn" disabled={isSubmitting}>
             {isSubmitting ? "Saving..." : "Save Changes"}
           </button>
-          <button 
-            type="button" 
-            className="cancel-btn" 
-            onClick={() => navigate("/profile")}
-            disabled={isSubmitting}
-          >
+          <button type="button" className="cancel-btn" onClick={() => navigate("/profile")} disabled={isSubmitting}>
             Cancel
           </button>
         </div>
